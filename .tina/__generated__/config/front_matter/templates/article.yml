@@ -1,0 +1,30 @@
+---
+label: Article
+name: article
+fields:
+  - type: text
+    label: Title
+    name: title
+  - type: text
+    label: Date
+    name: date
+  - type: number
+    label: Minute read
+    name: minread
+    description: How many minutes it will take to read the article
+  - type: textarea
+    label: Description
+    name: description
+  - type: text
+    label: Category
+    name: category
+  - type: text
+    label: Blog Image
+    name: imgurl
+  - name: author
+    label: Author
+    type: select
+    config:
+      source:
+        type: pages
+        section: authors
