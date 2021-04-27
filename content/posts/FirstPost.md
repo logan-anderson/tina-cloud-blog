@@ -3,7 +3,7 @@ title: This is the first post
 author: content/authors/pedro.md
 _template: article
 date: Mar 16 2020
-minread: 6
+minread: "6"
 description: Eiusmod excepteur cupidatat dolore minim non. Nisi aliqua ea fugiat anim aute incididunt reprehenderit velit qui. Sint nostrud fugiat laboris ut.
 imgurl: https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80
 ---

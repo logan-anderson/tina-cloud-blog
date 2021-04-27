@@ -1,4 +1,6 @@
 import { Posts_Document } from '@/../.tina/__generated__/types';
+import Link from 'next/link';
+import { usePrefix } from '../PrefixProvider';
 
 /* This example requires Tailwind CSS v2.0+ */
 const temp_posts = [
@@ -65,6 +67,7 @@ const temp_posts = [
 ];
 
 export function Blog({ posts }: { posts: Posts_Document[] }) {
+  const { prefix } = usePrefix();
   return (
     <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="absolute inset-0">
@@ -97,23 +100,22 @@ export function Blog({ posts }: { posts: Posts_Document[] }) {
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
                     <a
-                      href={`/blog#${post.data?.category}`}
+                      href={`${prefix}/blog#${post.data?.category}`}
                       className="hover:underline"
                     >
                       {post.data?.category}
                     </a>
                   </p>
-                  <a
-                    href={`/blog/${post.sys?.filename}`}
-                    className="block mt-2"
-                  >
-                    <p className="text-xl font-semibold text-gray-900">
-                      {post.data?.title}
-                    </p>
-                    <p className="mt-3 text-base text-gray-500">
-                      {post.data?.description}
-                    </p>
-                  </a>
+                  <Link href={`${prefix}/blog/${post.sys?.filename}`}>
+                    <a className="block mt-2">
+                      <p className="text-xl font-semibold text-gray-900">
+                        {post.data?.title}
+                      </p>
+                      <p className="mt-3 text-base text-gray-500">
+                        {post.data?.description}
+                      </p>
+                    </a>
+                  </Link>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">

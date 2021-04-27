@@ -4,6 +4,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
+import { usePrefix } from '../PrefixProvider';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(` `);
@@ -11,11 +12,15 @@ function classNames(...classes: string[]) {
 
 export function Nav() {
   const router = useRouter();
+  const { prefix } = usePrefix();
+  console.log({ prefix });
   const navigation = [
-    { name: `Home`, href: `/`, current: router.pathname === `/` },
-    { name: `Blog`, href: `/blog`, current: router.pathname === `/blog` },
-    // { name: `Projects`, href: `#`, current: false },
-    // { name: `Calendar`, href: `#`, current: false },
+    { name: `Home`, href: `${prefix}/`, current: router.pathname === `/` },
+    {
+      name: `Blog`,
+      href: `${prefix}/blog`,
+      current: router.pathname === `/blog`,
+    },
   ];
   return (
     <Disclosure as="nav" className="bg-gray-800">

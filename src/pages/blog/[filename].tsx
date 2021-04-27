@@ -1,30 +1,29 @@
-import { Blog } from '@/components/blog';
+/* eslint-disable no-underscore-dangle */
+import Markdown from 'react-markdown';
+import { Posts_Document } from '@/../.tina/__generated__/types';
 import { Layout } from '@/components/layout';
 import { createLocalClient } from '@/util';
-import { Posts_Document } from '../../../.tina/__generated__/types';
 
-export const getBlogPage = (hookfunc?: () => void) => {
-  const BlogPage = ({ getPostsList }: PostQueryAllResponseType) => {
-    console.log({ test: getPostsList });
-    if (hookfunc) {
-      hookfunc();
-    }
-    return (
-      <Layout>
-        <Blog posts={getPostsList} />
-      </Layout>
-    );
-  };
-  return BlogPage;
+const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => {
+  console.log({ test: getPostsDocument });
+  return (
+    <Layout>
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <h1 className="text-center text-5xl my-5">
+          {getPostsDocument.data?.title}
+        </h1>
+        <Markdown>{getPostsDocument.data?._body || ``}</Markdown>
+      </div>
+    </Layout>
+  );
 };
-const BlogPage = getBlogPage();
 
-export const queryAllPosts = (gql: any) => gql`
-  query BlogPostQuery {
-    getPostsList {
-      sys {
-        filename
-      }
+export type PostQueryResponseType = {
+  getPostsDocument: Posts_Document;
+};
+export const querySinglePost = (gql: any) => gql`
+  query getBlogPostQuery($relativePath: String!) {
+    getPostsDocument(relativePath: $relativePath) {
       data {
         __typename
         ... on Article_Doc_Data {
@@ -32,7 +31,9 @@ export const queryAllPosts = (gql: any) => gql`
           date
           minread
           description
+          category
           imgurl
+          _body
           author {
             data {
               ... on Author_Doc_Data {
@@ -47,21 +48,16 @@ export const queryAllPosts = (gql: any) => gql`
   }
 `;
 
-export type PostQueryResponseType = {
-  getPostsDocument: Posts_Document;
-};
-export type PostQueryAllResponseType = {
-  getPostsList: Posts_Document[];
-};
-
 const client = createLocalClient();
 
-export const getStaticProps = async () => ({
-  props: await client.request(queryAllPosts, {
-    variables: {},
-  }),
-});
-
+export const getStaticProps = async ({ params }: any) => {
+  console.log(params);
+  return {
+    props: await client.request(querySinglePost, {
+      variables: { relativePath: `${params.filename}.md` },
+    }),
+  };
+};
 /**
  * To build the blog post pages we just iterate through the list of
  * posts and provide their "filename" as part of the URL path
@@ -84,7 +80,6 @@ export const getStaticPaths = async () => {
     `,
     { variables: {} },
   );
-  console.log({ postsListData });
   return {
     paths: postsListData.getPostsList.map((post: Posts_Document) => ({
       params: { filename: post?.sys?.filename },
@@ -93,4 +88,4 @@ export const getStaticPaths = async () => {
   };
 };
 
-export default BlogPage;
+export default DetailBlogPage;

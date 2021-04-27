@@ -165,7 +165,7 @@ export type Article_Doc_Data = {
   __typename?: 'Article_Doc_Data';
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  minread?: Maybe<Scalars['Int']>;
+  minread?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
   imgurl?: Maybe<Scalars['String']>;
@@ -177,7 +177,7 @@ export type Article_Doc_Values = {
   __typename?: 'Article_Doc_Values';
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  minread?: Maybe<Scalars['Int']>;
+  minread?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
   imgurl?: Maybe<Scalars['String']>;
@@ -188,13 +188,6 @@ export type Article_Doc_Values = {
 
 export type TextField = FormField & {
   __typename?: 'TextField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
-};
-
-export type NumberField = FormField & {
-  __typename?: 'NumberField';
   name?: Maybe<Scalars['String']>;
   label?: Maybe<Scalars['String']>;
   component?: Maybe<Scalars['String']>;
@@ -215,7 +208,7 @@ export type SelectField = FormField & {
   options?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type Article_Doc_FormFieldsUnion = TextField | NumberField | TextareaField | SelectField;
+export type Article_Doc_FormFieldsUnion = TextField | TextareaField | SelectField;
 
 export type Article_Doc_Form = {
   __typename?: 'Article_Doc_Form';
@@ -227,7 +220,7 @@ export type Article_Doc_Form = {
 export type Article_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  minread?: Maybe<Scalars['Int']>;
+  minread?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
   imgurl?: Maybe<Scalars['String']>;

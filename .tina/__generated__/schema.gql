@@ -92,7 +92,7 @@ type Posts_Document implements Node & Document {
 type Article_Doc_Data {
   title: String
   date: String
-  minread: Int
+  minread: String
   description: String
   category: String
   imgurl: String
@@ -103,7 +103,7 @@ type Article_Doc_Data {
 type Article_Doc_Values {
   title: String
   date: String
-  minread: Int
+  minread: String
   description: String
   category: String
   imgurl: String
@@ -113,12 +113,6 @@ type Article_Doc_Values {
 }
 
 type TextField implements FormField {
-  name: String
-  label: String
-  component: String
-}
-
-type NumberField implements FormField {
   name: String
   label: String
   component: String
@@ -137,7 +131,7 @@ type SelectField implements FormField {
   options: [String]
 }
 
-union Article_Doc_FormFieldsUnion = TextField | NumberField | TextareaField | SelectField
+union Article_Doc_FormFieldsUnion = TextField | TextareaField | SelectField
 
 type Article_Doc_Form {
   label: String
@@ -148,7 +142,7 @@ type Article_Doc_Form {
 input Article_Doc_Input {
   title: String
   date: String
-  minread: Int
+  minread: String
   description: String
   category: String
   imgurl: String

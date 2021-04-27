@@ -22,7 +22,7 @@ export default defineSchema({
               name: 'date',
             },
             {
-              type: 'number',
+              type: 'text',
               label: 'Minute read',
               name: 'minread',
               description: 'How many minutes it will take to read the article',
