@@ -103,7 +103,10 @@ export function Blog({ posts }: { posts: Posts_Document[] }) {
                       {post.data?.category}
                     </a>
                   </p>
-                  <a href="/blog" className="block mt-2">
+                  <a
+                    href={`/blog/${post.sys?.filename}`}
+                    className="block mt-2"
+                  >
                     <p className="text-xl font-semibold text-gray-900">
                       {post.data?.title}
                     </p>

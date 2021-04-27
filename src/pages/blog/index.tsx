@@ -12,36 +12,12 @@ const BlogPage = ({ getPostsList }: PostQueryAllResponseType) => {
   );
 };
 
-export const querySinglePost = (gql: any) => gql`
-  query BlogPostQuery($relativePath: String!) {
-    getPostsDocument(relativePath: $relativePath) {
-      data {
-        __typename
-        ... on Article_Doc_Data {
-          title
-          date
-          minread
-          description
-          category
-          imgurl
-          _body
-          author {
-            data {
-              ... on Author_Doc_Data {
-                name
-                avatar
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const queryAllPosts = (gql: any) => gql`
   query BlogPostQuery {
     getPostsList {
+      sys {
+        filename
+      }
       data {
         __typename
         ... on Article_Doc_Data {
