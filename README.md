@@ -2,7 +2,7 @@
 
 Basic TinaCMS starter based on [Next.js](https://nextjs.org) and [TinaCMS](https://tina.io) that connects to Tina Cloud Content API.
 
-![Starter Homepage Preview](public/uploads/tina-cloud-starter-preview.png)
+![Starter Homepage Preview](https://github.com/logan-anderson/tina-cloud-starter/blob/main/public/uploads/tina-cloud-starter-preview.png)
 
 ## Project scope:
 
