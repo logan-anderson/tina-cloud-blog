@@ -1,15 +1,13 @@
 import '@/styles/global.css';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PrefixProvider } from '@/components/PrefixProvider';
 
 const TinaWrapper = dynamic(() => import(`../components/tina-wrapper`));
 
 function MyApp({ Component, pageProps }: any) {
   const { route } = useRouter();
-
-  // make sure the correct prefix is being used on first page load
 
   /**
    * If the route starts with /admin, we'll wrap the entire component tree
@@ -26,11 +24,9 @@ function MyApp({ Component, pageProps }: any) {
     );
   }
   return (
-    <>
-      <PrefixProvider>
-        <Component {...pageProps} />
-      </PrefixProvider>
-    </>
+    <PrefixProvider>
+      <Component {...pageProps} />
+    </PrefixProvider>
   );
 }
 
