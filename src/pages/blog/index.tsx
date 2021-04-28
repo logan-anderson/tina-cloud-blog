@@ -3,9 +3,12 @@ import { Layout } from '@/components/layout';
 import { createLocalClient } from '@/util';
 import { Posts_Document } from '../../../.tina/__generated__/types';
 
+/* 
+This function generates the blog page (Like a factory method).
+It can also be passed a hook function that will be called before returns the page.
+*/
 export const getBlogPage = (hookfunc?: () => void) => {
   const BlogPage = ({ getPostsList }: PostQueryAllResponseType) => {
-    console.log({ test: getPostsList });
     if (hookfunc) {
       hookfunc();
     }
@@ -19,6 +22,7 @@ export const getBlogPage = (hookfunc?: () => void) => {
 };
 const BlogPage = getBlogPage();
 
+// Query for getting all of the blog posts
 export const queryAllPosts = (gql: any) => gql`
   query BlogPostQuery {
     getPostsList {
@@ -61,36 +65,5 @@ export const getStaticProps = async () => ({
     variables: {},
   }),
 });
-
-/**
- * To build the blog post pages we just iterate through the list of
- * posts and provide their "filename" as part of the URL path
- *
- * So a blog post at "content/posts/hello.md" would
- * be viewable at http://localhost:3000/posts/hello
- */
-export const getStaticPaths = async () => {
-  const postsListData = await client.request<{
-    getPostsList: Posts_Document[];
-  }>(
-    (gql) => gql`
-      {
-        getPostsList {
-          sys {
-            filename
-          }
-        }
-      }
-    `,
-    { variables: {} },
-  );
-  console.log({ postsListData });
-  return {
-    paths: postsListData.getPostsList.map((post: Posts_Document) => ({
-      params: { filename: post?.sys?.filename },
-    })),
-    fallback: false,
-  };
-};
 
 export default BlogPage;

@@ -50,14 +50,12 @@ export const querySinglePost = (gql: any) => gql`
 
 const client = createLocalClient();
 
-export const getStaticProps = async ({ params }: any) => {
-  console.log(params);
-  return {
-    props: await client.request(querySinglePost, {
-      variables: { relativePath: `${params.filename}.md` },
-    }),
-  };
-};
+export const getStaticProps = async ({ params }: any) => ({
+  props: await client.request(querySinglePost, {
+    variables: { relativePath: `${params.filename}.md` },
+  }),
+});
+
 /**
  * To build the blog post pages we just iterate through the list of
  * posts and provide their "filename" as part of the URL path
