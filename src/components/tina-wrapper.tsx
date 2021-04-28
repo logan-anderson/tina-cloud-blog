@@ -5,6 +5,9 @@ import { SidebarPlaceholder } from './helper-components';
 import { createClient } from '../util';
 
 /**
+ * THIS WAS COPIED FROM https://github.com/tinacms/tina-cloud-starter
+ *
+ *
  * This gets loaded dynamically in "pages/_app.js"
  * if you're on a route that starts with "/admin"
  */

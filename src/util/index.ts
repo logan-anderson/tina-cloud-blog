@@ -1,9 +1,7 @@
+/* 
+THIS WAS COPIED FROM https://github.com/tinacms/tina-cloud-starter
+*/
 import { Client, LocalClient } from 'tina-graphql-gateway';
-
-export const createClient = () =>
-  process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT === `1`
-    ? createLocalClient()
-    : createCloudClient();
 
 export const createCloudClient = () => {
   const organization = process.env.NEXT_PUBLIC_ORGANIZATION_NAME;
@@ -19,7 +17,7 @@ export const createCloudClient = () => {
 
   if (missingEnv.length) {
     throw new Error(`The following environment variables are required when using the Tina Cloud Client:
-     ${missingEnv.join(`, `)}`);
+    ${missingEnv.join(`, `)}`);
   }
 
   return new Client({
@@ -39,6 +37,10 @@ export const createCloudClient = () => {
  */
 export const createLocalClient = () => new LocalClient();
 
+export const createClient = () =>
+  process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT === `1`
+    ? createLocalClient()
+    : createCloudClient();
 /**
  *
  * Takes a path (ex. /posts/my-page) and uses the first item

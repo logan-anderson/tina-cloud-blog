@@ -13,7 +13,6 @@ function classNames(...classes: string[]) {
 export function Nav() {
   const router = useRouter();
   const { prefix } = usePrefix();
-  console.log({ prefix });
   const navigation = [
     { name: `Home`, href: `${prefix}/`, current: router.pathname === `/` },
     {

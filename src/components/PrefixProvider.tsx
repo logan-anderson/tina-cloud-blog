@@ -7,6 +7,9 @@ const PrefixContext = React.createContext({
   setPrefix: (prefix: string) => {},
 });
 
+/* 
+We will wrap our app in this so we will always be able to get the prefix state with `usePrefix`
+*/
 export const PrefixProvider: React.FC = ({ children }) => {
   const router = useRouter();
   const [prefix, setPrefix] = useState(

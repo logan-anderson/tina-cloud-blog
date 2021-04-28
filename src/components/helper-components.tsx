@@ -3,6 +3,10 @@ import React from 'react';
 import { css } from 'styled-jsx/css';
 import Link from 'next/link';
 /**
+ * THIS WAS COPIED FROM https://github.com/tinacms/tina-cloud-starter
+ *
+ *
+ *
  * For demonstration purposes, feel free to delete or modify
  * any of these components, no magic going on here!
  */

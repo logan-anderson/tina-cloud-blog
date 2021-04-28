@@ -4,19 +4,16 @@ import { Posts_Document } from '@/../.tina/__generated__/types';
 import { Layout } from '@/components/layout';
 import { createLocalClient } from '@/util';
 
-const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => {
-  console.log({ test: getPostsDocument });
-  return (
-    <Layout>
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <h1 className="text-center text-5xl my-5">
-          {getPostsDocument.data?.title}
-        </h1>
-        <Markdown>{getPostsDocument.data?._body || ``}</Markdown>
-      </div>
-    </Layout>
-  );
-};
+const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => (
+  <Layout>
+    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <h1 className="text-center text-5xl my-5">
+        {getPostsDocument.data?.title}
+      </h1>
+      <Markdown>{getPostsDocument.data?._body || ``}</Markdown>
+    </div>
+  </Layout>
+);
 
 export type PostQueryResponseType = {
   getPostsDocument: Posts_Document;
