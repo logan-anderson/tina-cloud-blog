@@ -1,5 +1,4 @@
 import React from 'react';
-import { useGraphqlForms } from 'tina-graphql-gateway';
 import HomePage from '..';
 
 /**
@@ -9,10 +8,5 @@ import HomePage from '..';
  * Tina sidebar form built for you automatically!
  */
 export default function AdminPage() {
-  //   const [payload, isLoading] = useGraphqlForms({
-  //     query,
-  //     variables: {},
-  //   });
-
   return <HomePage />;
 }
