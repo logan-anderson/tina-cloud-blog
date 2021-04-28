@@ -30,3 +30,4 @@ fields:
         section: authors
 pages:
   - content/posts/This_is_a_test.md
+  - content/posts/This_is_another_test.md
