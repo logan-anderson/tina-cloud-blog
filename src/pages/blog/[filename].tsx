@@ -3,13 +3,26 @@ import Markdown from 'react-markdown';
 import { Posts_Document } from '@/../.tina/__generated__/types';
 import { Layout } from '@/components/layout';
 import { createLocalClient } from '@/util';
+import Link from 'next/link';
 
+//  Main blog page with blog body
 const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => (
   <Layout>
     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <Link href="/blog">
+        <a className="text-indigo-600  hover:underline hover:font-bold">
+          {` `}
+          &#8592; blog index
+        </a>
+      </Link>
       <h1 className="text-center text-5xl my-5">
         {getPostsDocument.data?.title}
       </h1>
+      <img
+        className="md:max-w-xl mx-auto rounded-md shadow-sm"
+        alt={getPostsDocument.data?.title || `A large blog image`}
+        src={getPostsDocument.data?.imgurl || ``}
+      />
       <Markdown>{getPostsDocument.data?._body || ``}</Markdown>
     </div>
   </Layout>
@@ -18,6 +31,10 @@ const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => (
 export type PostQueryResponseType = {
   getPostsDocument: Posts_Document;
 };
+
+/* 
+Make a graphql query for a single post
+*/
 export const querySinglePost = (gql: any) => gql`
   query getBlogPostQuery($relativePath: String!) {
     getPostsDocument(relativePath: $relativePath) {

@@ -20,6 +20,10 @@ const TinaWrapper: React.FC = ({ children }) => {
         },
         sidebar: {
           placeholder: SidebarPlaceholder,
+          buttons: {
+            save: `Publish`,
+            reset: `Reset`,
+          },
         },
         enabled: true,
       }),

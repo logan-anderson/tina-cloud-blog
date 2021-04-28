@@ -1,3 +1,4 @@
+// NAVIGATION
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
@@ -13,11 +14,15 @@ export function Nav() {
   const router = useRouter();
   const { prefix } = usePrefix();
   const navigation = [
-    { name: `Home`, href: `${prefix}/`, current: router.pathname === `/` },
+    {
+      name: `Home`,
+      href: `${prefix}/`,
+      current: router.pathname === `/` || router.pathname === `/admin`,
+    },
     {
       name: `Blog`,
       href: `${prefix}/blog`,
-      current: router.pathname === `/blog`,
+      current: router.pathname.includes(`/blog`),
     },
   ];
   return (
