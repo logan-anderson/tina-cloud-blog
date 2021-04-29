@@ -9,4 +9,13 @@ author: content/authors/napolean.md
 _template: article
 ---
 
+# heading one
+## heading two
+
+### Heading Three
+
+#### Heading Four
+##### Heading Five
+##### Heading Six
 This is a test
+

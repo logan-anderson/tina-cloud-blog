@@ -27,7 +27,30 @@ const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => {
           alt={getPostsDocument.data?.title || `A large blog image`}
           src={getPostsDocument.data?.imgurl || ``}
         />
-        <Markdown>{getPostsDocument.data?._body || ``}</Markdown>
+        <Markdown
+          components={{
+            h1: ({ children }) => (
+              <h1 className="text-5xl text-center">{children}</h1>
+            ),
+            h2: ({ children }) => (
+              <h2 className="text-4xl text-center">{children}</h2>
+            ),
+            h3: ({ children }) => (
+              <h3 className="text-3xl text-center">{children}</h3>
+            ),
+            h4: ({ children }) => (
+              <h4 className="text-3xl text-center">{children}</h4>
+            ),
+            h5: ({ children }) => (
+              <h5 className="text-2xl text-center">{children}</h5>
+            ),
+            h6: ({ children }) => (
+              <h6 className="text-xl text-center">{children}</h6>
+            ),
+          }}
+        >
+          {getPostsDocument.data?._body || ``}
+        </Markdown>
         <AuthorCard post={getPostsDocument} />
       </div>
     </Layout>
