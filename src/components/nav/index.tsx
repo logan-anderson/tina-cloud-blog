@@ -87,7 +87,7 @@ export function Nav() {
                               : `text-gray-300 hover:bg-gray-700 hover:text-white`,
                             `px-3 py-2 rounded-md text-sm font-medium`,
                           )}
-                          aria-current={item.current ? `page` : undefined}
+                          aria-current={item.current ? `page` : `false`}
                         >
                           {item.name}
                         </a>
@@ -192,7 +192,7 @@ export function Nav() {
                         : `text-gray-300 hover:bg-gray-700 hover:text-white`,
                       `block px-3 py-2 rounded-md text-base font-medium`,
                     )}
-                    aria-current={item.current ? `page` : undefined}
+                    aria-current={item.current ? `page` : `false`}
                   >
                     {item.name}
                   </a>
