@@ -5,6 +5,7 @@ import { Layout } from '@/components/layout';
 import { createLocalClient } from '@/util';
 import Link from 'next/link';
 import { usePrefix } from '@/components/PrefixProvider';
+import { AuthorCard } from '@/components/blog/AuthorCard';
 
 //  Main blog page with blog body
 const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => {
@@ -27,6 +28,7 @@ const DetailBlogPage = ({ getPostsDocument }: PostQueryResponseType) => {
           src={getPostsDocument.data?.imgurl || ``}
         />
         <Markdown>{getPostsDocument.data?._body || ``}</Markdown>
+        <AuthorCard post={getPostsDocument} />
       </div>
     </Layout>
   );
@@ -53,6 +55,9 @@ export const querySinglePost = (gql: any) => gql`
           imgurl
           _body
           author {
+            sys {
+              filename
+            }
             data {
               ... on Author_Doc_Data {
                 name

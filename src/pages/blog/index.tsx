@@ -38,6 +38,9 @@ export const queryAllPosts = (gql: any) => gql`
           description
           imgurl
           author {
+            sys {
+              filename
+            }
             data {
               ... on Author_Doc_Data {
                 name

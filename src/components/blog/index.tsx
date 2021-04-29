@@ -1,6 +1,7 @@
 import { Posts_Document } from '@/../.tina/__generated__/types';
 import Link from 'next/link';
 import { usePrefix } from '../PrefixProvider';
+import { AuthorCard } from './AuthorCard';
 
 /* This example requires Tailwind CSS v2.0+ */
 const temp_posts = [
@@ -99,12 +100,9 @@ export function Blog({ posts }: { posts: Posts_Document[] }) {
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
-                    <a
-                      href={`${prefix}/blog#${post.data?.category}`}
-                      className="hover:underline"
-                    >
-                      {post.data?.category}
-                    </a>
+                    <Link href={`${prefix}/blog#${post.data?.category}`}>
+                      <a className="hover:underline">{post.data?.category}</a>
+                    </Link>
                   </p>
                   <Link href={`${prefix}/blog/${post.sys?.filename}`}>
                     <a className="block mt-2">
@@ -117,33 +115,7 @@ export function Blog({ posts }: { posts: Posts_Document[] }) {
                     </a>
                   </Link>
                 </div>
-                <div className="mt-6 flex items-center">
-                  <div className="flex-shrink-0">
-                    <a href="/blog/fix-this">
-                      <span className="sr-only">
-                        {post.data?.author?.data?.name}
-                      </span>
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={post.data?.author?.data?.avatar || ``}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">
-                      <a href="/blog/fix-this" className="hover:underline">
-                        {post.data?.author?.data?.name}
-                      </a>
-                    </p>
-                    <div className="flex space-x-1 text-sm text-gray-500">
-                      {/* <time dateTime={post.datetime}>{post.data?.date}</time> */}
-                      <time>{post.data?.date}</time>
-                      <span aria-hidden="true">&middot;</span>
-                      <span>{post.data?.minread} read</span>
-                    </div>
-                  </div>
-                </div>
+                <AuthorCard post={post} />
               </div>
             </div>
           ))}
