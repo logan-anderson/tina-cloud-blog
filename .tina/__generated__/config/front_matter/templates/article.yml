@@ -28,3 +28,5 @@ fields:
       source:
         type: pages
         section: authors
+pages:
+  - content/posts/This_is_a_new_post.md
