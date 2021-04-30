@@ -1,10 +1,48 @@
 // NAVIGATION
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { LoginIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
 import { usePrefix } from '../PrefixProvider';
+
+const LoginButton = () => {
+  const { prefix, setPrefix } = usePrefix();
+  const { push, asPath } = useRouter();
+
+  return (
+    <button
+      type="button"
+      className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+      onClick={() => {
+        if (prefix === ``) {
+          // If we are not at an admin route then go to the admin route
+          setPrefix(`/admin`);
+          push(`/admin${asPath}`);
+        } else {
+          // If we are in an admin route then go to the non-admin route
+          setPrefix(``);
+          push(asPath.replace(`/admin`, ``));
+          // edge case for when the path is only '/admin' we want to go back to the home page ('/') and not '' (empty string)
+          if (asPath === `/admin`) {
+            push(`/`);
+          }
+        }
+      }}
+    >
+      <span className="sr-only">View notifications</span>
+      <LoginIcon className="h-6 w-6 inline" aria-hidden="true" />
+      <span className="ml-3 relative">
+        {prefix === `` && (
+          <>
+            Login <span className="hidden sm:inline">with Tina Cloud</span>
+          </>
+        )}
+        {prefix === `/admin` && <>Logout</>}
+      </span>
+    </button>
+  );
+};
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(` `);
@@ -97,14 +135,7 @@ export function Nav() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
+                <LoginButton />
                 {/* Profile dropdown */}
                 {/* <Menu as="div" className="ml-3 relative">
                   {({ open }) => (

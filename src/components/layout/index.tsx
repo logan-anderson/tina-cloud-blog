@@ -16,7 +16,8 @@ export const Layout: React.FC = ({ children }) => {
       <Nav />
       <main className="mb-auto"> {children}</main>
       <footer className="bg-blue-white flex flex-col md:flex-row justify-center m-6">
-        <button
+        {/* Old enter edit mode button */}
+        {/* <button
           type="button"
           onClick={() => {
             if (prefix === ``) {
@@ -34,10 +35,10 @@ export const Layout: React.FC = ({ children }) => {
             }
           }}
           className="mx-5 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          {/* make sure the text is correct */}
-          {prefix === `` ? `Edit page` : `Exit edit mode`}
-        </button>
+        > */}
+        {/* make sure the text is correct */}
+        {/* {prefix === `` ? `Login with Tina Cloud` : `Exit edit mode`} */}
+        {/* </button> */}
         <a
           href="https://tina.io"
           target="_blank"
@@ -46,7 +47,7 @@ export const Layout: React.FC = ({ children }) => {
         >
           {/* <span> */}
           <div className="flex items-center content-center">
-            Editing powered by
+            Content powered by
             <svg
               viewBox="0 0 49 68"
               fill="inherit"
