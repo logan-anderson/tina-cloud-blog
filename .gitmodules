@@ -1,0 +1,3 @@
+[submodule "tina-cloud-blog-content"]
+	path = tina-cloud-blog-content
+	url = https://github.com/logan-anderson/tina-cloud-blog-content.git
