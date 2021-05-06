@@ -5,7 +5,7 @@ export default defineSchema({
     {
       label: 'Blog Posts',
       name: 'posts',
-      path: 'content/posts',
+      path: 'tina-cloud-blog-content/posts',
       templates: [
         {
           label: 'Article',
@@ -55,7 +55,7 @@ export default defineSchema({
     {
       label: 'Authors',
       name: 'authors',
-      path: 'content/authors',
+      path: 'tina-cloud-blog-content/authors',
       templates: [
         {
           label: 'Author',
