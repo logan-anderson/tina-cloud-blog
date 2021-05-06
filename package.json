@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "yarn tina-gql server:start -c \"next dev\"",
     "build": "yarn tina-gql server:start -c \"next build\"",
+    "export": "yarn build && next export",
     "start": "next start",
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
